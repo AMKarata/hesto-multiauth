@@ -29,6 +29,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin/home';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -66,7 +67,8 @@ class RegisterController extends Controller
         return Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => $data['password'],
+            // 'password' => bcrypt($data['password']),
         ]);
     }
 

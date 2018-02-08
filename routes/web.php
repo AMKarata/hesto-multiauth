@@ -27,6 +27,16 @@ Route::group(['prefix' => 'admin'], function () {
   Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+
+  Route::get('posts', 'PostController@index');
+
+  Route::resource('users', 'UserController');
+
+  Route::resource('roles', 'RoleController');
+
+  Route::resource('permissions', 'PermissionController');
+
+  Route::resource('posts', 'PostController');
 });
 
 Route::group(['prefix' => 'employee'], function () {
@@ -60,3 +70,13 @@ Route::group(['prefix' => 'customer'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/', 'PostController@index')->name('home');
+//
+// Route::resource('users', 'UserController');
+//
+// Route::resource('roles', 'RoleController');
+//
+// Route::resource('permissions', 'PermissionController');
+//
+// Route::resource('posts', 'PostController');
